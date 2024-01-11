@@ -9,4 +9,10 @@ public class Operaciones {
 		return resultat;
 	}
 
+	public int resta(int a, int b) {
+		int resultat;
+		
+		resultat= a-b;
+		return resultat;
+	}
 }
