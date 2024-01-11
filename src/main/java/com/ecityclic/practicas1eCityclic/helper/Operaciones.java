@@ -15,4 +15,11 @@ public class Operaciones {
 		resultat= a-b;
 		return resultat;
 	}
+	
+	public int multiplica(int a, int b) {
+		int resultat;
+		
+		resultat= a*b;
+		return resultat;
+	}
 }
