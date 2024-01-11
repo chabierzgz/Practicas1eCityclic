@@ -3,6 +3,8 @@
  */
 package com.ecityclic.practicas1eCityclic;
 
+import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
+
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -11,6 +13,7 @@ public class Application {
 	public static void main(String[] args) {
 		int prueba = 1;
 		log.info("Método main para hacer la prueba {}", prueba);
+
 	}
 	
 	public boolean someLibraryMethod() {
