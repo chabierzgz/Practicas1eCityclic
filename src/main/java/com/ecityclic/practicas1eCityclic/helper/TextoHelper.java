@@ -1,27 +1,85 @@
 package com.ecityclic.practicas1eCityclic.helper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
 import com.ecityclic.practicas1eCityclic.beans.Persona;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class TextoHelper {
+
 	
-	public void dibujar (Persona persona, int repetir) {
+
+	Scanner lector = new Scanner(System.in);
+
+	
+
+	public void dibujar(Persona persona, int repetir) {
+
+		for (int i = 0; i < repetir; i++) {
+
+		}
+
+		int i = 0;
+		while (i < repetir) {
+			log.info("Datos personales :" + persona);
+			i++;
+		}
+
+	}
+
+	public List<Persona> getPersonas(int numDePersonas) {
+		
+		List<Persona> personas = new ArrayList<Persona>();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
 		
 		int i = 0;
 		
-		while( i< repetir) {
+		while (i < numDePersonas) {
 			
-			log.info("Datos personales :"+persona);
+
+			Persona persona = new Persona();
+
+			System.out.println("escribe nombre");
+			persona.setNom("Nombre "+i);//lector.nextLine());
+
+			System.out.println("escribe feCHa de naCimiento (dd/MM/yyyy)");
+			String feCHaNaCimiento = lector.nextLine(); 
+
+			System.out.println("escribe ciudad");
+			String ciudad = lector.nextLine();
 			
+			try {
+				persona.setFechaNacimiento(sdf.parse(feCHaNaCimiento));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			persona.setCiutat(ciudad);
+			
+			personas.add(persona);
+			
+			
+
 			i++;
-			
+
 		}
 		
+		return personas;
+
+	}
+
+	public void pintarSoloMayoresDe(int i) {
+		// TODO Auto-generated method stub
 		
 	}
 
 }
-
-
