@@ -22,4 +22,14 @@ public class Operaciones {
 		resultat= a*b;
 		return resultat;
 	}
+	
+	public double potenciaExponente (double potencia, double exponente) {
+		
+		double resultado;
+		
+		resultado = Math.pow(potencia, exponente);
+		
+		return resultado;
+		
+	}
 }
