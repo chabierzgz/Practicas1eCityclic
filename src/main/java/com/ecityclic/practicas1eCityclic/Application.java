@@ -3,6 +3,11 @@
  */
 package com.ecityclic.practicas1eCityclic;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Date;
+
+import com.ecityclic.practicas1eCityclic.beans.Persona;
 import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 
 import lombok.extern.log4j.Log4j2;
@@ -11,8 +16,23 @@ import lombok.extern.log4j.Log4j2;
 public class Application {
 	
 	public static void main(String[] args) {
-		int prueba = 1;
-		log.info("Método main para hacer la prueba {}", prueba);
+//		int prueba = 1;
+//		log.info("Método main para hacer la prueba {}", prueba);
+		
+		Persona persona = new Persona();
+		
+		Date fecha = new Date();
+		
+		fecha.setYear(1980);
+		
+		persona.setNom("Carlos");
+		persona.setCiutat("Mataró");
+		persona.setFechaNacimiento(fecha);
+		
+		TextoHelper texto = new TextoHelper();
+		
+		texto.dibujar(persona, 5);
+		
 
 	}
 	
