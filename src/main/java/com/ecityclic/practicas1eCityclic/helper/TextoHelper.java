@@ -126,7 +126,7 @@ public class TextoHelper {
 
 				if (anos >= edad) {
 
-					log.info(person + "\n Edad: " + anos);
+					log.info(person + "\nEdad: " + anos);
 
 				}
 
