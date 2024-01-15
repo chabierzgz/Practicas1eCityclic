@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -72,37 +73,25 @@ public class TextoHelper {
 
 	}
 
-	public void pintarSoloMayoresDe(int edad) {
+	public void pintarSoloMayoresDe(int edad, int cantidadDePersonas) {
 
 		List<Persona> personas = new ArrayList<Persona>();
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
 		int i = 0;
 
-		while (i < 3) {
+		while (i < cantidadDePersonas) {
 
 			Persona persona = new Persona();
 
-			System.out.println("escribe nombre");
-			persona.setNom("Nombre " + i);// lector.nextLine());
+			persona.setNom("Nombre " + i);
 
-			System.out.println("escribe feCHa de naCimiento (dd/MM/yyyy)");
-			String feCHaNaCimiento = lector.nextLine();
+			persona.setFechaNacimiento(generaFecha());
 
-			System.out.println("escribe ciudad");
-			String ciudad = lector.nextLine();
-
-			try {
-				persona.setFechaNacimiento(sdf.parse(feCHaNaCimiento));
-
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-
-			persona.setCiutat(ciudad);
+			persona.setCiutat("Ciudad " + i);
 
 			personas.add(persona);
+
+			log.info(persona);
 
 			i++;
 
@@ -117,12 +106,6 @@ public class TextoHelper {
 			fechaN.setTime(person.getFechaNacimiento());
 
 			int anos = fechaHoy.get(Calendar.YEAR) - fechaN.get(Calendar.YEAR);
-			int mes = fechaHoy.get(Calendar.MONTH) - fechaN.get(Calendar.MONTH);
-			int dia = fechaHoy.get(Calendar.DATE) - fechaN.get(Calendar.DATE);
-
-			if (mes < 0 || (mes == 0 && dia < 0)) {
-
-				anos--;
 
 				if (anos >= edad) {
 
@@ -130,9 +113,16 @@ public class TextoHelper {
 
 				}
 
-			}
-
 		}
+
+	}
+
+	public Date generaFecha() {
+		Calendar c = Calendar.getInstance();
+		int num = (int) (Math.random() * 100);
+
+		c.add(Calendar.YEAR, -num);
+		return c.getTime();
 
 	}
 
