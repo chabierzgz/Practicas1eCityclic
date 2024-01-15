@@ -28,10 +28,10 @@ public class Application {
 //		int prueba = 1;
 //		log.info("Método main para hacer la prueba {}", prueba);
 		
-		Date fecha1 = getBirthDate1(1050,Calendar.MARCH,24);
+/*		Date fecha1 = getBirthDate1(1050,Calendar.MARCH,24);
 		Date fecha2 = getBirthDate2("24/03/1950");
 		
-		
+		10
 		Persona persona = new Persona();
 		persona.setNom("Carlos");
 		persona.setFechaNacimiento(fecha1);
@@ -47,7 +47,13 @@ public class Application {
 			log.info(p);
 		}
 		
+		textoHelper.pintarSoloMayoresDe(40);*/
+		
+		TextoHelper textoHelper = new TextoHelper();
+		
 		textoHelper.pintarSoloMayoresDe(40);
+		
+		
 
 	}
 	
