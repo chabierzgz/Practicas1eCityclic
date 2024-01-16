@@ -9,7 +9,10 @@ import com.ecityclic.practicas1eCityclic.helper.Operaciones;
 public class OperacionesMatematicas {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 	Operaciones operacion = new Operaciones();
 	
 	int num1 = (int) (Math.random() * 10);
@@ -17,11 +20,15 @@ public class OperacionesMatematicas {
 	
 			
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	@Test
 	public void test() {
 		Operaciones operacion = new Operaciones();
 		
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 		
 	}
@@ -31,6 +38,12 @@ public class OperacionesMatematicas {
 
 	}
 
+=======
+		assertEquals(num1+num2, operacion.suma(num1, num2));
+
+	}
+
+>>>>>>> Stashed changes
 	@Test
 	public void testResta() {
 		
