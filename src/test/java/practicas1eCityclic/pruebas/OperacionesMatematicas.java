@@ -32,10 +32,15 @@ public class OperacionesMatematicas {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testPotencias() {
 		
-//		assertEquals(64, operacion.potenciaExponente(4, 3));
+		int resultadoPrueba = 64;
+		
+		int resultadoMetodo = (int) operacion.potenciaExponente(4, 3);
+		
+		assertEquals(resultadoPrueba, resultadoMetodo );
 		
 	}
 }
