@@ -107,11 +107,11 @@ public class TextoHelper {
 
 			int anos = fechaHoy.get(Calendar.YEAR) - fechaN.get(Calendar.YEAR);
 
-				if (anos >= edad) {
+			if (anos >= edad) {
 
-					log.info(person + "\nEdad: " + anos);
+				log.info(person + "\nEdad: " + anos);
 
-				}
+			}
 
 		}
 
