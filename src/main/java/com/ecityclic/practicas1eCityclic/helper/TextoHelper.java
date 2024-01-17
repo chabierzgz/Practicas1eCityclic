@@ -1,24 +1,15 @@
 package com.ecityclic.practicas1eCityclic.helper;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
-
-import org.joda.time.LocalDate;
-
 import com.ecityclic.practicas1eCityclic.beans.Persona;
-
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class TextoHelper {
 
-	Scanner lector = new Scanner(System.in);
 
 	public void dibujar(Persona persona, int repetir) {
 
