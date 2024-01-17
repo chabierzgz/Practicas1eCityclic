@@ -1,13 +1,10 @@
 package practicas1eCityclic;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import com.ecityclic.practicas1eCityclic.beans.Persona;
 import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 
 public class TestoHelperTest {
@@ -26,7 +23,6 @@ public class TestoHelperTest {
 	public void testGetPersonas() {
 		
 		assertEquals(3, textoHelper.getPersonas(3).size());
-		
 			
 	}
 }

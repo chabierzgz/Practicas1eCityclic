@@ -4,14 +4,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature/#5-mejora-método
 import com.ecityclic.practicas1eCityclic.beans.Persona;
-
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class TextoHelper {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/#5-mejora-método
 	public void dibujar(Persona persona, int repetir) {
 
 		for (int i = 0; i < repetir; i++) {

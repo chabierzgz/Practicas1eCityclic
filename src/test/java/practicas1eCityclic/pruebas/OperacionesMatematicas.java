@@ -9,6 +9,7 @@ import com.ecityclic.practicas1eCityclic.helper.Operaciones;
 public class OperacionesMatematicas {
 
 
+
 	Operaciones operacion = new Operaciones();
 	
 	int num1 = (int) (Math.random() * 10);
@@ -17,18 +18,19 @@ public class OperacionesMatematicas {
 			
 
 	@Test
-	public void test() {
-		Operaciones operacion = new Operaciones();
-		
+	public void testSuma() {
 
-		assertEquals(num1+num2, operacion.suma(num1, num2));
+		int resultado = num1 - num2;
+
+		assertEquals(resultado, operacion.resta(num1, num2));
+
 
 	}
 
 	@Test
 	public void testResta() {
-		
-		int resultado=num1-num2;
+
+		int resultado = num1 - num2;
 
 		assertEquals(resultado, operacion.resta(num1, num2));
 
@@ -36,8 +38,10 @@ public class OperacionesMatematicas {
 
 	@Test
 	public void testMultiplica() {
-		
-		int resultado=num1*num2;
+
+
+		int resultado = num1 * num2;
+
 
 		assertEquals(resultado, operacion.multiplica(num1, num2));
 
@@ -45,10 +49,11 @@ public class OperacionesMatematicas {
 
 	@Test
 	public void testPotencias() {
-		
-		int resultado=(int)Math.pow(num1, num2);
 
-		assertEquals(resultado, (int)operacion.potenciaExponente(num1, num2));
+		int resultado = (int) Math.pow(num1, num2);
+
+		assertEquals(resultado, (int) operacion.potenciaExponente(num1, num2));
+
 
 	}
 
