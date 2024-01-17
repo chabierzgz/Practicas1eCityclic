@@ -8,39 +8,44 @@ import com.ecityclic.practicas1eCityclic.helper.Operaciones;
 
 public class OperacionesMatematicas {
 
-	
 	Operaciones operacion = new Operaciones();
-	
+
+	int num1 = (int) (Math.random() * 10);
+	int num2 = (int) (Math.random() * 10);
+
 	@Test
 	public void testSuma() {
-		
-		assertEquals(8, operacion.suma(3, 5));
-		
+
+		int resultado = num1 - num2;
+
+		assertEquals(resultado, operacion.resta(num1, num2));
+
 	}
-	
+
 	@Test
 	public void testResta() {
-		
-		assertEquals(5, operacion.resta(10, 5));
-		
+
+		int resultado = num1 - num2;
+
+		assertEquals(resultado, operacion.resta(num1, num2));
+
 	}
 
 	@Test
 	public void testMultiplica() {
-		
-		assertEquals(50, operacion.multiplica(10, 5));
-		
+
+		int resultado = num1 * num2;
+
+		assertEquals(resultado, operacion.multiplica(num1, num2));
+
 	}
-	
-	@SuppressWarnings("deprecation")
+
 	@Test
 	public void testPotencias() {
-		
-		int resultadoPrueba = 64;
-		
-		int resultadoMetodo = (int) operacion.potenciaExponente(4, 3);
-		
-		assertEquals(resultadoPrueba, resultadoMetodo );
-		
+
+		int resultado = (int) Math.pow(num1, num2);
+
+		assertEquals(resultado, (int) operacion.potenciaExponente(num1, num2));
+
 	}
 }
