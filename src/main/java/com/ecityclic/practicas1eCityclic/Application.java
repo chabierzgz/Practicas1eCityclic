@@ -8,11 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import java.util.Scanner;
 
-
 import com.ecityclic.practicas1eCityclic.beans.Persona;
+
 import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 
 import lombok.extern.log4j.Log4j2;
@@ -24,9 +23,6 @@ public class Application {
 		Application application = new Application();
 		application.run();
 	}
-
-	
-	
 
 	private void run() {
 
@@ -40,7 +36,7 @@ public class Application {
 		int opcion = scan.nextInt();
 
 		switch (opcion) {
-		
+
 		case 1:
 
 			Date fecha1 = getBirthDate1(1050, Calendar.MARCH, 24);
@@ -54,7 +50,7 @@ public class Application {
 			textoHelper.dibujar(persona, opcion);
 
 			break;
-			
+
 		case 2:
 
 			List<Persona> personas = textoHelper.getPersonas(2);
@@ -64,7 +60,7 @@ public class Application {
 			}
 
 			break;
-			
+
 		case 3:
 
 			textoHelper.pintarSoloMayoresDe(40, 10);
@@ -74,8 +70,6 @@ public class Application {
 		default:
 			break;
 		}
-
-
 	}
 
 	private Date getBirthDate2(String fechaString) {
@@ -89,7 +83,6 @@ public class Application {
 		}
 		return fecha;
 	}
-
 
 	private Date getBirthDate1(int year, int month, int day) {
 

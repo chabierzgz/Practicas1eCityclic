@@ -23,7 +23,7 @@ public class TestoHelperTest {
 	public void testGetPersonas() {
 		
 		assertEquals(3, textoHelper.getPersonas(3).size());
-			
+
 	}
 }
 	
