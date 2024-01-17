@@ -5,11 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-
-import org.joda.time.LocalDate;
 
 import com.ecityclic.practicas1eCityclic.beans.Persona;
 

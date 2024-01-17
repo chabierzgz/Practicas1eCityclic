@@ -4,12 +4,10 @@
 package practicas1eCityclic;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import com.ecityclic.practicas1eCityclic.Application;
-import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 
 public class ApplicationTest {
     
@@ -21,3 +19,5 @@ public class ApplicationTest {
 	
 
 }
+
+
