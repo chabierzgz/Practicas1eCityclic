@@ -10,6 +10,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import com.ecityclic.practicas1eCityclic.beans.Persona;
 
 import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
@@ -17,16 +21,23 @@ import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
+@SpringBootApplication
 public class Application {
-
+	
+	@Autowired
+	TextoHelper textoHelper;
+	
+	
 	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
 		Application application = new Application();
 		application.run();
 	}
+	
 
 	private void run() {
 
-		TextoHelper textoHelper = new TextoHelper();
+//		TextoHelper textoHelper = new TextoHelper();
 
 		Scanner scan = new Scanner(System.in);
 
@@ -42,10 +53,10 @@ public class Application {
 			Date fecha1 = getBirthDate1(1050, Calendar.MARCH, 24);
 			Date fecha2 = getBirthDate2("24/03/1950");
 
-			Persona persona = new Persona();
-			persona.setNom("Carlos");
-			persona.setFechaNacimiento(fecha1);
-			persona.setCiutat("Mataró");
+			Persona persona = Persona.builder().nom("Carlos").fechaNacimiento(textoHelper.generaFecha()).ciutat("Mataró").build();
+//			persona.setNom("Carlos");
+//			persona.setFechaNacimiento(fecha1);
+//			persona.setCiutat("Mataró");
 
 			textoHelper.dibujar(persona, opcion);
 
@@ -70,6 +81,7 @@ public class Application {
 		default:
 			break;
 		}
+		scan.close();
 	}
 
 	private Date getBirthDate2(String fechaString) {

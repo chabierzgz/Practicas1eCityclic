@@ -5,12 +5,19 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.ecityclic.practicas1eCityclic.beans.Persona;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
+@Component
 public class TextoHelper {
+	
+
+
+
 
 	public void dibujar(Persona persona, int repetir) {
 
@@ -29,15 +36,17 @@ public class TextoHelper {
 		int i = 0;
 
 		while (i < numDePersonas) {
+			
+			Persona persona = Persona.builder().nom("Nombre " + i).fechaNacimiento(generaFecha()).ciutat("ciutat"+i).build();
 
-			Persona persona = new Persona();
-
-			persona.setNom("Nombre " + i);
-
-			persona.setFechaNacimiento(generaFecha());
-
-			persona.setCiutat("Ciudad " + i);
-
+//			Persona persona = new Persona();
+//
+//			persona.setNom("Nombre " + i);
+//
+//			persona.setFechaNacimiento(generaFecha());
+//
+//			persona.setCiutat("Ciudad " + i);
+//
 			personas.add(persona);
 
 			i++;
