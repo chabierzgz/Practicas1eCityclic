@@ -2,11 +2,12 @@ package com.ecityclic.practicas1eCityclic.beans;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
-@ToString
+@Builder
 public class Persona {
 
 	
