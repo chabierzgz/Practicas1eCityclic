@@ -47,7 +47,6 @@ public class Practica1ControllerPersons {
 	@GetMapping(path = "/all", produces = "application/json")
 	public ResponseEntity<List<Persona>> getAllPersons(){
 		List<Persona> personas = personService.getAllPersons();
-		
 		return new ResponseEntity<>(personas, HttpStatus.OK);
 	}
 	

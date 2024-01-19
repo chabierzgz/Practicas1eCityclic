@@ -15,10 +15,6 @@ import lombok.extern.log4j.Log4j2;
 @Component
 public class TextoHelper {
 	
-
-
-
-
 	public void dibujar(Persona persona, int repetir) {
 
 		for (int i = 0; i < repetir; i++) {
