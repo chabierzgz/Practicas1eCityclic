@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ecityclic.practicas1eCityclic.beans.Persona;
+import com.ecityclic.practicas1eCityclic.entity.Persona;
 
 import lombok.extern.log4j.Log4j2;
 

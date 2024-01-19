@@ -7,13 +7,13 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import com.ecityclic.practicas1eCityclic.Application;
+import com.ecityclic.practicas1eCityclic.MyApplicationRunner;
 
 public class ApplicationTest {
     
 	@Test
     public void testSomeLibraryMethod() {
-        Application classUnderTest = new Application();
+        MyApplicationRunner classUnderTest = new MyApplicationRunner();
         assertFalse("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
     }
 	
