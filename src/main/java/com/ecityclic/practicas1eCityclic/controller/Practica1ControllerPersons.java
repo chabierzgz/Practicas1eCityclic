@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.ecityclic.practicas1eCityclic.beans.PersonPetition;
-import com.ecityclic.practicas1eCityclic.beans.Persona;
+import com.ecityclic.practicas1eCityclic.entity.Persona;
 import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 import com.ecityclic.practicas1eCityclic.service.PersonService;
 
 import lombok.extern.log4j.Log4j2;
 
 @RestController
-@RequestMapping("/practica1")
+@RequestMapping("/practica1/persons")
 @Log4j2
-public class Practica1Controller {
+public class Practica1ControllerPersons {
 	
 	@Autowired
 	private PersonService personService;
@@ -31,10 +31,10 @@ public class Practica1Controller {
 	@Autowired
 	private TextoHelper textoHelper;
 	
-	@PostMapping(path = "/persons/generate", consumes = "application/json", produces = "application/json")
+	@PostMapping(path = "/generate", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Boolean> generatePersons(@RequestBody PersonPetition petition) {
 		try {
-			List<Persona> persons = textoHelper.getPersonas(petition.getNumberOfPersons());
+			List<Persona> persons = textoHelper.generatePersons(petition.getNumberOfPersons());
 			personService.saveAllPersons(persons);
 			return new ResponseEntity<>(true, HttpStatus.CREATED);
 		}catch(Exception e) {
@@ -44,26 +44,26 @@ public class Practica1Controller {
 		
 	}
 	
-	@GetMapping(path = "/persons/", produces = "application/json")
-	public ResponseEntity<List<Persona>> getToken(){
+	@GetMapping(path = "/all", produces = "application/json")
+	public ResponseEntity<List<Persona>> getAllPersons(){
 		List<Persona> personas = personService.getAllPersons();
 		
 		return new ResponseEntity<>(personas, HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "/persons/olderThan/{edad}", produces = "application/json")
-	public ResponseEntity<List<Persona>> getToken(@PathVariable String edad){
+	@GetMapping(path = "/olderThan/{edad}", produces = "application/json")
+	public ResponseEntity<List<Persona>> getPeronsOlderThan(@PathVariable String edad){
 
-		List<Persona> personas = null;
+		List<Persona>  personasMayores = null;
 		try {
 			int age = Integer.valueOf(edad);
-			personas = personService.getAllPersons();
-			textoHelper.pintarSoloMayoresDe(age, 10);
+			List<Persona> personas = personService.getAllPersons();
+			personasMayores = textoHelper.getSoloMayoresDe(personas, age);
 			
 		} catch (NumberFormatException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The request parameters are not correct.");
 		}
 		
-		return new ResponseEntity<>(personas, HttpStatus.OK);
+		return new ResponseEntity<>(personasMayores, HttpStatus.OK);
 	}
 }

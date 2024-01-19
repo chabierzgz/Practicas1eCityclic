@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ecityclic.practicas1eCityclic.beans.Persona;
+import com.ecityclic.practicas1eCityclic.entity.Persona;
 import com.ecityclic.practicas1eCityclic.repository.PersonRepository;
 
 @Service

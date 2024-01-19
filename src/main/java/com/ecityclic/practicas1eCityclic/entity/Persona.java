@@ -1,4 +1,4 @@
-package com.ecityclic.practicas1eCityclic.beans;
+package com.ecityclic.practicas1eCityclic.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -22,7 +22,7 @@ public class TestoHelperTest {
 	@Test
 	public void testGetPersonas() {
 		
-		assertEquals(3, textoHelper.getPersonas(3).size());
+		assertEquals(3, textoHelper.generatePersons(3).size());
 
 	}
 }

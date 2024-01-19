@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.ecityclic.practicas1eCityclic.beans.Persona;
+import com.ecityclic.practicas1eCityclic.entity.Persona;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -29,7 +29,7 @@ public class TextoHelper {
 
 	}
 
-	public List<Persona> getPersonas(int numDePersonas) {
+	public List<Persona> generatePersons(int numDePersonas) {
 
 		List<Persona> personas = new ArrayList<Persona>();
 
@@ -56,10 +56,11 @@ public class TextoHelper {
 		return personas;
 
 	}
+	
 
-	public void pintarSoloMayoresDe(int edad, int cantidadDePersonas) {
-
-		List<Persona> personas = getPersonas(cantidadDePersonas);
+	public List<Persona> getSoloMayoresDe(List<Persona> personas, int edad) {
+		
+		List<Persona> personasFiltro = new ArrayList<Persona>();
 
 		for (Persona person : personas) {
 
@@ -72,12 +73,12 @@ public class TextoHelper {
 			int anos = fechaHoy.get(Calendar.YEAR) - fechaN.get(Calendar.YEAR);
 
 			if (anos >= edad) {
-
-				log.info(person + "\nEdad: " + anos);
+				personasFiltro.add(person);
 
 			}
 
 		}
+		return personasFiltro;
 
 	}
 
@@ -88,5 +89,11 @@ public class TextoHelper {
 		c.add(Calendar.YEAR, -num);
 		return c.getTime();
 
+	}
+
+	public void pintaLista(List<Persona> lista) {
+		for (Persona persona : lista) {
+			log.info(persona.toString());
+		}
 	}
 }

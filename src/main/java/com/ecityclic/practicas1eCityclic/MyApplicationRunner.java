@@ -12,7 +12,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.ecityclic.practicas1eCityclic.beans.Persona;
+import com.ecityclic.practicas1eCityclic.entity.Persona;
 import com.ecityclic.practicas1eCityclic.helper.TextoHelper;
 import com.ecityclic.practicas1eCityclic.service.PersonService;
 
@@ -58,7 +58,7 @@ public class MyApplicationRunner implements ApplicationRunner {
 
 		case 2:
 
-			List<Persona> personas = textoHelper.getPersonas(2);
+			List<Persona> personas = textoHelper.generatePersons(2);
 			personaService.saveAllPersons(personas);
 			
 			List<Persona> personasBD = personaService.getAllPersons();
@@ -70,8 +70,9 @@ public class MyApplicationRunner implements ApplicationRunner {
 			break;
 
 		case 3:
-
-			textoHelper.pintarSoloMayoresDe(40, 10);
+			List<Persona> listaPersonas = textoHelper.generatePersons(10);
+			List<Persona> lista = textoHelper.getSoloMayoresDe(listaPersonas, 40);
+			textoHelper.pintaLista(lista);
 
 			break;
 
