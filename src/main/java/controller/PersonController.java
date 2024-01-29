@@ -32,7 +32,7 @@ public class PersonController {
 	}
 
 	@PostMapping(path = "/generate", consumes = "application/json", produces = "application/json")
-	public Boolean generatePerson(@RequestBody PersonPetition petition) {
+	public Boolean generatePersonas(@RequestBody PersonPetition petition) {
 
 		List<Persona> personas = textoHelper.generatePersonas(petition.getNumberOfPersons());
 		personService.saveAllPersons(personas);
