@@ -14,10 +14,6 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @Component
 public class TextoHelper {
-	
-
-
-
 
 	public void dibujar(Persona persona, int repetir) {
 
@@ -36,12 +32,8 @@ public class TextoHelper {
 		int i = 0;
 
 		while (i < numDePersonas) {
-			
-			Persona persona = Persona
-					.builder()
-					.nom("Nombre " + i)
-					.fechaNacimiento(generaFecha())
-					.ciutat("ciutat"+i)
+
+			Persona persona = Persona.builder().nom("Nombre " + i).fechaNacimiento(generaFecha()).ciutat("ciutat" + i)
 					.build();
 
 			personas.add(persona);
@@ -57,7 +49,7 @@ public class TextoHelper {
 	public List<Persona> pintarSoloMayoresDe(int edad, int cantidadDePersonas) {
 
 		List<Persona> listPersonas = new ArrayList<Persona>();
- 		List<Persona> personas = generatePersonas(cantidadDePersonas);
+		List<Persona> personas = generatePersonas(cantidadDePersonas);
 
 		for (Persona person : personas) {
 

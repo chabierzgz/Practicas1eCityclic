@@ -29,4 +29,6 @@ public class PersonService {
     public List<Persona> getAllPersons() {
         return personaRepository.findAll();
     }
+    
+    
 }
