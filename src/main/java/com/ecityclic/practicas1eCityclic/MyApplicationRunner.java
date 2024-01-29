@@ -58,7 +58,7 @@ public class MyApplicationRunner implements ApplicationRunner {
 
 		case 2:
 
-			List<Persona> personas = textoHelper.getPersonas(2);
+			List<Persona> personas = textoHelper.generatePersonas(2);
 			personaService.saveAllPersons(personas);
 //			
 			List<Persona> personasBD = personaService.getAllPersons();
@@ -70,7 +70,7 @@ public class MyApplicationRunner implements ApplicationRunner {
 			break;
 
 		case 3:
-			List<Persona> listaPersonas = textoHelper.getPersonas(10);
+			List<Persona> listaPersonas = textoHelper.generatePersonas(10);
 //			List<Persona> lista = textoHelper.getSoloMayoresDe(listaPersonas, 40);
 //			textoHelper.pintaLista(lista);
 

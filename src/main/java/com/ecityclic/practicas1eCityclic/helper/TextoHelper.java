@@ -29,7 +29,7 @@ public class TextoHelper {
 
 	}
 
-	public List<Persona> getPersonas(int numDePersonas) {
+	public List<Persona> generatePersonas(int numDePersonas) {
 
 		List<Persona> personas = new ArrayList<Persona>();
 
@@ -37,16 +37,13 @@ public class TextoHelper {
 
 		while (i < numDePersonas) {
 			
-			Persona persona = Persona.builder().nom("Nombre " + i).fechaNacimiento(generaFecha()).ciutat("ciutat"+i).build();
+			Persona persona = Persona
+					.builder()
+					.nom("Nombre " + i)
+					.fechaNacimiento(generaFecha())
+					.ciutat("ciutat"+i)
+					.build();
 
-//			Persona persona = new Persona();
-//
-//			persona.setNom("Nombre " + i);
-//
-//			persona.setFechaNacimiento(generaFecha());
-//
-//			persona.setCiutat("Ciudad " + i);
-//
 			personas.add(persona);
 
 			i++;
@@ -57,9 +54,10 @@ public class TextoHelper {
 
 	}
 
-	public void pintarSoloMayoresDe(int edad, int cantidadDePersonas) {
+	public List<Persona> pintarSoloMayoresDe(int edad, int cantidadDePersonas) {
 
-		List<Persona> personas = getPersonas(cantidadDePersonas);
+		List<Persona> listPersonas = new ArrayList<Persona>();
+ 		List<Persona> personas = generatePersonas(cantidadDePersonas);
 
 		for (Persona person : personas) {
 
@@ -73,11 +71,12 @@ public class TextoHelper {
 
 			if (anos >= edad) {
 
-				log.info(person + "\nEdad: " + anos);
+				listPersonas.add(person);
 
 			}
 
 		}
+		return listPersonas;
 
 	}
 
