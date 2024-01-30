@@ -1,4 +1,4 @@
-package controller;
+package com.ecityclic.practicas1eCityclic.controller;
 
 import java.util.List;
 

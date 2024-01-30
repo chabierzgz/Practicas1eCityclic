@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-import controller.PersonController;
+import com.ecityclic.practicas1eCityclic.controller.PersonController;
 
 
 @SpringBootApplication
