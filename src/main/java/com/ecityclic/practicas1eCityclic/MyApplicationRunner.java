@@ -23,7 +23,7 @@ import lombok.extern.log4j.Log4j2;
 public class MyApplicationRunner implements ApplicationRunner {
 	
 	@Autowired
-	TextoHelper textoHelper;
+	private TextoHelper textoHelper;
 	
 	@Autowired
 	private PersonService personaService;
@@ -31,7 +31,6 @@ public class MyApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-//		TextoHelper textoHelper = new TextoHelper();
 
 		Scanner scan = new Scanner(System.in);
 
