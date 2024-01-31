@@ -3,7 +3,7 @@ package com.ecityclic.practicas1eCityclic.helper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Operaciones {
+public class OperacionesHelper {
 
 	public int suma(int a, int b) {
 

@@ -12,5 +12,5 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class PersonPetition {
-	private int numberOfPersons;
+	private int numberOfPersons;	
 }

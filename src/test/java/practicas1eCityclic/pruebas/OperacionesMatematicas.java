@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.ecityclic.practicas1eCityclic.helper.Operaciones;
+import com.ecityclic.practicas1eCityclic.helper.OperacionesHelper;
 
 public class OperacionesMatematicas {
 
-	Operaciones operacion = new Operaciones();
+	OperacionesHelper operacion = new OperacionesHelper();
 
 	int num1 = (int) (Math.random() * 10);
 	int num2 = (int) (Math.random() * 10);

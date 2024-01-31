@@ -5,15 +5,20 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ecityclic.practicas1eCityclic.entity.Persona;
+import com.ecityclic.practicas1eCityclic.service.PersonService;
 
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Component
 public class TextoHelper {
+
+	@Autowired
+	private PersonService personService;
 
 	public void dibujar(Persona persona, int repetir) {
 
@@ -79,5 +84,32 @@ public class TextoHelper {
 		c.add(Calendar.YEAR, -num);
 		return c.getTime();
 
+	}
+
+	public List<Persona> getPeopleOlderThan(int edad) {
+
+		List<Persona> personas = personService.getAllPersons();
+
+		List<Persona> personasMayores = new ArrayList<Persona>();
+
+		for (Persona person : personas) {
+
+			Calendar fechaN = Calendar.getInstance();
+
+			Calendar fechaHoy = Calendar.getInstance();
+
+			fechaN.setTime(person.getFechaNacimiento());
+
+			int anos = fechaHoy.get(Calendar.YEAR) - fechaN.get(Calendar.YEAR);
+
+			if (anos >= edad) {
+
+				personasMayores.add(person);
+
+			}
+
+		}
+
+		return personasMayores;
 	}
 }
