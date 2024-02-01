@@ -28,9 +28,9 @@ public class PersonController {
 	@Autowired
 	private TextoHelper textoHelper;
 
-	@GetMapping
+	@GetMapping("/hola")
 	@ResponseBody
-	public String HelloWorld() {
+	public String helloWorld() {
 		return "Hola mundo";
 	}
 
