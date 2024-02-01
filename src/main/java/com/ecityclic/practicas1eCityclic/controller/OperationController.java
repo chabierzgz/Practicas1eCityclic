@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ecityclic.practicas1eCityclic.beans.NumberPetition;
-import com.ecityclic.practicas1eCityclic.beans.PersonPetition;
 import com.ecityclic.practicas1eCityclic.helper.OperacionesHelper;
 
 
@@ -18,9 +17,6 @@ public class OperationController {
 	
 	@Autowired
 	private OperacionesHelper operacionesHelper;
-	
-//	@Autowired
-//	private NumberPetition numberPetition;
 	
 	@GetMapping("/suma/{num1}/{num2}")
 	public int getSuma(@PathVariable("num1")int num1, @PathVariable("num2") int num2) {
