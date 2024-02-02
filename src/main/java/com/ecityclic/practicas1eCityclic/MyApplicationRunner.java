@@ -11,6 +11,16 @@ public class MyApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+    	
+//    	String operacion = "5+6+2";
+//    	
+//    	MathematicOperationHelper mathematicOperationHelper = new MathematicOperationHelper();
+//    	
+//    	int resultado = mathematicOperationHelper.transOperation(operacion);
+//    	
+//    	System.out.println("resultado = "+ resultado);
+    	
+
 
 	}
 
