@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MathematicsOperations {
+public class MathematicsOperationsEntity {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,6 +1,7 @@
 package com.ecityclic.practicas1eCityclic.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ecityclic.practicas1eCityclic.beans.MathematicPetition;
-import com.ecityclic.practicas1eCityclic.entity.MathematicsOperations;
+import com.ecityclic.practicas1eCityclic.entity.MathematicsOperationsEntity;
 import com.ecityclic.practicas1eCityclic.helper.MathematicOperationHelper;
 import com.ecityclic.practicas1eCityclic.service.MathematicService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,9 +32,9 @@ public class mathematicController {
 	@ResponseBody
 	public int getResultOperationA(@RequestBody MathematicPetition mathematicPetition) {
 
-		mathematicService.saveMathematicOperation(MathematicsOperations.builder().operationMath(mathematicPetition.getOperation()).build());
+		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(mathematicPetition.getOperation()).build());
 
-		return mathematicOperationHelper.transOperation(mathematicPetition.getOperation());
+		return mathematicOperationHelper.bestTransOperation(mathematicPetition.getOperation());
 
 	}
 
@@ -41,31 +42,29 @@ public class mathematicController {
 	@ResponseBody
 	public int getResultOperationB(@PathVariable("operation") String operation) {
 
-		mathematicService.saveMathematicOperation(MathematicsOperations.builder().operationMath(operation).build());
+		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(operation).build());
 
-		return mathematicOperationHelper.transOperation(operation);
+		return mathematicOperationHelper.bestTransOperation(operation);
 
 	}
 
-	@GetMapping("/getoperations")
+	@GetMapping("/getOperations")
 	@ResponseBody
-	public List<MathematicsOperations> getOperations() {
+	public List<MathematicsOperationsEntity> getOperations() {
 		
-		List<MathematicsOperations> operationsList;
+		List<MathematicsOperationsEntity> operationsList;
 
 		return operationsList = mathematicService.getMathematicOperation();
 	}
 	
 	
 
-//	@GetMapping("/getOperation/{id}")
-//	@ResponseBody
-//	public String getOperatioForId(@PathVariable("id") int id)) {
-//		
-//		mathematicService.getMathematicOperationById(id);
-//		MathematicsOperations.builder().id(id).
-//		
-//		return mathematicService.getClass();
-//	}
+	@GetMapping("/getOperation/{id}")
+	@ResponseBody
+	public Optional<MathematicsOperationsEntity> getOperatioForId(@PathVariable("id") int id) {
+		
+		return mathematicService.getMathematicOperationById(id);
+		
+	}
 
 }
