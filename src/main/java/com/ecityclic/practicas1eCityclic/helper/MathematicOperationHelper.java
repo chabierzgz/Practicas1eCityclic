@@ -3,52 +3,19 @@ package com.ecityclic.practicas1eCityclic.helper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.ecityclic.practicas1eCityclic.entity.MathematicsOperationsEntity;
+import com.ecityclic.practicas1eCityclic.service.MathematicService;
 
 @Component
 public class MathematicOperationHelper {
 
-//	public int transOperation(String operation) {
-//
-//		int tam = operation.length();
-//		String A[] = new String[100];
-//		// Array para almacenar operadores.;
-//		String operaciones[] = new String[100];
-//		int posicion = 0;
-//		int sum = 0;
-//		String aux = "";
-//
-//		// inicializa primer operador.
-//
-//		operaciones[0] = "+";
-//		int index_operacion = 1;
-//		for (int i = 0; i < tam; i++) {
-//			if (operation.charAt(i) == '+' || operation.charAt(i) == '-') {
-//				A[posicion] = aux;
-//				operaciones[index_operacion] = String.valueOf(operation.charAt(i));
-//				posicion++;
-//				index_operacion++;
-//				aux = "";
-//			} else {
-//				aux = aux + operation.charAt(i);
-//			}
-//		}
-//		A[posicion] = aux;
-//		posicion++;
-//
-//		for (int i = 0; i < posicion; i++) {
-//			// Determina la operación a realizar.
-//			if (operaciones[i].equals("+")) {
-//				sum = sum + Integer.parseInt(A[i]);
-//			} else if (operaciones[i].equals("-")) {
-//				sum = sum - Integer.parseInt(A[i]);
-//			}
-//
-//		}
-//
-//		return sum;
-//		System.out.println("=  " + sum);
-//	}
+	@Autowired
+	MathematicService mathematicService;
 
 	public int bestTransOperation(String operation) {
 
@@ -80,6 +47,34 @@ public class MathematicOperationHelper {
 				resultado = resultado - Integer.parseInt(numeros.get(i));
 			}
 
+		}
+
+		return resultado;
+
+	}
+
+	public int getSoloSuma(int id) {
+
+		MathematicsOperationsEntity mathematicsOperationsEntity = mathematicService.getMathematicOperationById(id);
+
+		String operacion = mathematicsOperationsEntity.getOperationMath();
+		List<String> numero = new ArrayList<String>();
+		String guardaNum = "";
+		int resultado = 0;
+
+		for (int i = 0; i < operacion.length(); i++) {
+			if (operacion.charAt(i) == '+') {
+				numero.add(guardaNum);
+			} else if (operacion.charAt(i) == '-') {
+				i = operacion.length();
+				throw new ResponseStatusException(HttpStatus.FOUND, "La operación seleccionada no es una suma");
+			} else {
+				guardaNum = guardaNum + operacion.charAt(i);
+			}
+		}
+
+		for (int i = 0; i < numero.size(); i++) {
+			resultado = resultado + Integer.parseInt(numero.get(i));
 		}
 
 		return resultado;

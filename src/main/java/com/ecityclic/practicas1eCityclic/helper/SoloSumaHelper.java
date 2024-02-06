@@ -3,6 +3,9 @@ package com.ecityclic.practicas1eCityclic.helper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class SoloSumaHelper {
 
 	public int getSoloSuma(String numeros) {

@@ -28,10 +28,13 @@ public class MathematicService {
 		return mathematicRepository.findAll();
 
 	}
-	
-	public Optional<MathematicsOperationsEntity> getMathematicOperationById (int id) {
-		
-		return mathematicRepository.findById(id);
+
+	public MathematicsOperationsEntity getMathematicOperationById(int id) {
+
+		Optional<MathematicsOperationsEntity> mathematicsOperationsEntity = mathematicRepository.findById(id);
+
+		return mathematicsOperationsEntity.get();
+
 	}
 
 }
