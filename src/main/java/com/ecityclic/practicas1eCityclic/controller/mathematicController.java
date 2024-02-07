@@ -1,5 +1,6 @@
 package com.ecityclic.practicas1eCityclic.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.ecityclic.practicas1eCityclic.beans.MathematicPetition;
 import com.ecityclic.practicas1eCityclic.entity.MathematicsOperationsEntity;
+import com.ecityclic.practicas1eCityclic.enums.OperationsEnum;
 import com.ecityclic.practicas1eCityclic.helper.MathematicOperationHelper;
 import com.ecityclic.practicas1eCityclic.service.MathematicService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,28 +74,36 @@ public class mathematicController {
 	@ResponseBody
 	public int getSoloSuma(@RequestParam("id") int id) {
 
-
 		return mathematicOperationHelper.getSoloSuma(id);
 
+	}
 
+	@PostMapping("/sumavalores")
+	@ResponseBody
+	public int getResultSumaNumeros(@RequestParam(value="valores") HashMap<OperationsEnum, Integer> valores) {
 
-		}
-	
+		String operacion = mathematicOperationHelper.sumaNumerosString(valores);
+
+		mathematicService
+				.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(operacion).build());
+
+		return mathematicOperationHelper.sumaNumeros(valores);
+	}
+
 	/**
 	 * quiero que recibas operaciones como:
-	 *  localhost:8081/sumanNumeros?SUMA=1212&menos=2323&multiplica=22
-	 * y que me devuelvas el resultado. Ademas, que guardes esta operacion en BD
-	 * para poderlas listas luego en otro momento.
+	 * localhost:8081/sumanNumeros?SUMA=1212&menos=2323&multiplica=22 y que me
+	 * devuelvas el resultado. Ademas, que guardes esta operacion en BD para
+	 * poderlas listas luego en otro momento.
 	 * 
 	 * Quiero poder ver todas las operaciones que se han hecho
 	 * 
 	 * Quiero poder repetir una operacion.
 	 * 
-	 * Pra ahorrar espacio en la BVD, no se guardará el resultado de la operación
+	 * Pra ahorrar espacio en la BD, no se guardará el resultado de la operación
 	 * Estse será siempre calculado.
 	 */
-	
-	
+
 //	@GetMapping("/sumaNumeros/{valores}")
 //	@ResponseBody
 //	public void sumaNumeros(@RequestParam Hash<String,Integer> valores) {
@@ -106,8 +116,5 @@ public class mathematicController {
 //			
 //		}
 //	}
-		
-
-	
 
 }

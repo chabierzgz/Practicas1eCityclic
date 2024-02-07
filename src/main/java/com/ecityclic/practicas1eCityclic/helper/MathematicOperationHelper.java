@@ -1,7 +1,9 @@
 package com.ecityclic.practicas1eCityclic.helper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.ecityclic.practicas1eCityclic.entity.MathematicsOperationsEntity;
+import com.ecityclic.practicas1eCityclic.enums.OperationsEnum;
 import com.ecityclic.practicas1eCityclic.service.MathematicService;
 
 @Component
@@ -78,6 +81,50 @@ public class MathematicOperationHelper {
 		}
 
 		return resultado;
+	}
+
+	public int sumaNumeros(HashMap<OperationsEnum, Integer> valores) {
+
+		int resultado = 0;
+
+		for (Map.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
+
+			if (datos.getKey().equals(OperationsEnum.SUMA)) {
+				resultado = resultado + datos.getValue();
+			} else if (datos.getKey().equals(OperationsEnum.RESTA)) {
+				resultado = resultado - datos.getValue();
+			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION)) {
+				resultado = resultado * datos.getValue();
+			}else if (datos.getKey().equals(OperationsEnum.DIVISION)) {
+				resultado = resultado / datos.getValue();
+			}
+
+		}
+
+		return resultado;
+	}
+
+	public String sumaNumerosString(HashMap<OperationsEnum, Integer> valores) {
+
+		String operacion = "";
+
+		for (Map.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
+
+			if ("suma".equals(datos.getKey())) {
+				operacion = operacion + OperationsEnum.SUMA.getSigno();
+			} else if (datos.getKey().equals(OperationsEnum.RESTA)) {
+				operacion = operacion + OperationsEnum.RESTA.getSigno();
+			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION)) {
+				operacion = operacion + OperationsEnum.MULTIPLICACION.getSigno();
+			} else if (datos.getKey().equals(OperationsEnum.DIVISION)) {
+				operacion = operacion + OperationsEnum.DIVISION.getSigno();
+			} else {
+				operacion = operacion + String.valueOf(datos.getValue());
+			}
+
+		}
+
+		return operacion;
 
 	}
 

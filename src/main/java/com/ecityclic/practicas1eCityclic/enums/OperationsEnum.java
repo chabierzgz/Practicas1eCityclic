@@ -7,8 +7,7 @@ public enum OperationsEnum {
 	RESTA("-"),
 	SUMA("+"),
 	MULTIPLICACION("*"),
-	DIVISION("/")
-	;
+	DIVISION("/");
 	
 
 	private String signo;
@@ -16,5 +15,9 @@ public enum OperationsEnum {
 	
 	OperationsEnum(String signo) {
 		this.signo = signo;
+	}
+	
+	public String getOperator() {
+		return signo;
 	}
 }
