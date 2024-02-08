@@ -3,7 +3,7 @@ package com.ecityclic.practicas1eCityclic.helper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -83,19 +83,19 @@ public class MathematicOperationHelper {
 		return resultado;
 	}
 
-	public int sumaNumeros(HashMap<OperationsEnum, Integer> valores) {
+	public int sumaNumerosA(HashMap<OperationsEnum, Integer> valores) {
 
 		int resultado = 0;
 
-		for (Map.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
+		for (HashMap.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
 
-			if (datos.getKey().equals(OperationsEnum.SUMA)) {
+			if (datos.getKey().equals(OperationsEnum.SUMA.name())) {
 				resultado = resultado + datos.getValue();
-			} else if (datos.getKey().equals(OperationsEnum.RESTA)) {
+			} else if (datos.getKey().equals(OperationsEnum.RESTA.name())) {
 				resultado = resultado - datos.getValue();
-			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION)) {
+			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION.name())) {
 				resultado = resultado * datos.getValue();
-			}else if (datos.getKey().equals(OperationsEnum.DIVISION)) {
+			} else if (datos.getKey().equals(OperationsEnum.DIVISION.name())) {
 				resultado = resultado / datos.getValue();
 			}
 
@@ -107,16 +107,17 @@ public class MathematicOperationHelper {
 	public String sumaNumerosString(HashMap<OperationsEnum, Integer> valores) {
 
 		String operacion = "";
+		String valor = "";
 
-		for (Map.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
+		for (HashMap.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
 
-			if ("suma".equals(datos.getKey())) {
+			if (OperationsEnum.SUMA.name().equals(datos.getKey())) {
 				operacion = operacion + OperationsEnum.SUMA.getSigno();
-			} else if (datos.getKey().equals(OperationsEnum.RESTA)) {
+			} else if (datos.getKey().equals(OperationsEnum.RESTA.name())) {
 				operacion = operacion + OperationsEnum.RESTA.getSigno();
-			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION)) {
+			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION.name())) {
 				operacion = operacion + OperationsEnum.MULTIPLICACION.getSigno();
-			} else if (datos.getKey().equals(OperationsEnum.DIVISION)) {
+			} else if (datos.getKey().equals(OperationsEnum.DIVISION.name())) {
 				operacion = operacion + OperationsEnum.DIVISION.getSigno();
 			} else {
 				operacion = operacion + String.valueOf(datos.getValue());
@@ -126,6 +127,19 @@ public class MathematicOperationHelper {
 
 		return operacion;
 
+	}
+
+	public int sumaNumeros(List<Integer> valores) {
+
+		int suma = valores.stream().mapToInt(Integer::intValue).sum();
+		return suma;
+	}
+
+	public String numeroSumaToString(List<Integer> valores) {
+		String espacio = " ";
+
+		String numeros = valores.stream().map(Object::toString).collect(Collectors.joining(espacio));
+		return numeros;
 	}
 
 }

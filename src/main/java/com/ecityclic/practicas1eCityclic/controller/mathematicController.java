@@ -2,6 +2,7 @@ package com.ecityclic.practicas1eCityclic.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,15 +79,24 @@ public class mathematicController {
 
 	}
 
-	@PostMapping("/sumavalores")
+//	@PostMapping("/sumavalores")
+//	@ResponseBody
+//	public int getResultSumaNumeros(@RequestParam HashMap<OperationsEnum, Integer> valores) {
+//
+//		String operacion =mathematicOperationHelper.sumaNumerosString(valores);
+//
+//		mathematicService
+//				.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(operacion).build());
+//
+//		return mathematicOperationHelper.sumaNumerosA(valores);
+//	}
+
+	@GetMapping("/sumanumeros")
 	@ResponseBody
-	public int getResultSumaNumeros(@RequestParam(value="valores") HashMap<OperationsEnum, Integer> valores) {
+	public int getMethodName(@RequestParam List<Integer> valores) {
 
-		String operacion = mathematicOperationHelper.sumaNumerosString(valores);
-
-		mathematicService
-				.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(operacion).build());
-
+		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
+				.operationMath(mathematicOperationHelper.numeroSumaToString(valores)).build());
 		return mathematicOperationHelper.sumaNumeros(valores);
 	}
 
