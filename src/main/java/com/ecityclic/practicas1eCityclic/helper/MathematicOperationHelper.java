@@ -86,16 +86,26 @@ public class MathematicOperationHelper {
 	public int sumaNumerosA(HashMap<OperationsEnum, Integer> valores) {
 
 		int resultado = 0;
+		int numero = 0;
+		String num = "";
 
 		for (HashMap.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
 
-			if (datos.getKey().equals(OperationsEnum.SUMA.name())) {
-				resultado = resultado + datos.getValue();
-			} else if (datos.getKey().equals(OperationsEnum.RESTA.name())) {
-				resultado = resultado - datos.getValue();
-			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION.name())) {
+			if (OperationsEnum.SUMA.name().toLowerCase().equals(datos.getKey())&& datos.getValue()!=null) {
+				num=String.valueOf(datos.getValue());
+				numero = Integer.valueOf(num);
+				resultado = resultado + numero;
+			} else if (OperationsEnum.RESTA.name().equals(datos.getKey())&& datos.getValue()!=null) {
+				num=String.valueOf(datos.getValue());
+				numero = Integer.valueOf(num);
+				resultado = resultado - numero;
+			} else if (OperationsEnum.MULTIPLICACION.name().equals(datos.getKey())&& datos.getValue()!=null) {
+				num=String.valueOf(datos.getValue());
+				numero = Integer.valueOf(num);
 				resultado = resultado * datos.getValue();
-			} else if (datos.getKey().equals(OperationsEnum.DIVISION.name())) {
+			} else if (OperationsEnum.DIVISION.name().equals(datos.getKey())&& datos.getValue()!=null) {
+				num=String.valueOf(datos.getValue());
+				numero = Integer.valueOf(num);
 				resultado = resultado / datos.getValue();
 			}
 
@@ -104,22 +114,23 @@ public class MathematicOperationHelper {
 		return resultado;
 	}
 
-	public String sumaNumerosString(HashMap<OperationsEnum, Integer> valores) {
+	public String numerosString(HashMap<OperationsEnum, Integer> valores) {
 
 		String operacion = "";
-		String valor = "";
 
 		for (HashMap.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
 
 			if (OperationsEnum.SUMA.name().equals(datos.getKey())) {
 				operacion = operacion + OperationsEnum.SUMA.getSigno();
-			} else if (datos.getKey().equals(OperationsEnum.RESTA.name())) {
+				operacion = operacion + String.valueOf(datos.getValue());
+			} else if (OperationsEnum.RESTA.name().equals(datos.getKey())) {
 				operacion = operacion + OperationsEnum.RESTA.getSigno();
-			} else if (datos.getKey().equals(OperationsEnum.MULTIPLICACION.name())) {
+				operacion = operacion + String.valueOf(datos.getValue());
+			} else if (OperationsEnum.MULTIPLICACION.name().equals(datos.getKey())) {
 				operacion = operacion + OperationsEnum.MULTIPLICACION.getSigno();
-			} else if (datos.getKey().equals(OperationsEnum.DIVISION.name())) {
+				operacion = operacion + String.valueOf(datos.getValue());
+			} else if (OperationsEnum.DIVISION.name().equals(datos.getKey())) {
 				operacion = operacion + OperationsEnum.DIVISION.getSigno();
-			} else {
 				operacion = operacion + String.valueOf(datos.getValue());
 			}
 

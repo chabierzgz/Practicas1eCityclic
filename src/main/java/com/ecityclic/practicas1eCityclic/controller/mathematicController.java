@@ -79,21 +79,19 @@ public class mathematicController {
 
 	}
 
-//	@PostMapping("/sumavalores")
-//	@ResponseBody
-//	public int getResultSumaNumeros(@RequestParam HashMap<OperationsEnum, Integer> valores) {
-//
-//		String operacion =mathematicOperationHelper.sumaNumerosString(valores);
-//
-//		mathematicService
-//				.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(operacion).build());
-//
-//		return mathematicOperationHelper.sumaNumerosA(valores);
-//	}
+	@GetMapping("/sumavalores")
+	@ResponseBody
+	public int getResultSumaNumeros(@RequestParam HashMap<OperationsEnum, Integer> valores) {
+
+		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
+				.operationMath(mathematicOperationHelper.numerosString(valores)).build());
+
+		return mathematicOperationHelper.sumaNumerosA(valores);
+	}
 
 	@GetMapping("/sumanumeros")
 	@ResponseBody
-	public int getMethodName(@RequestParam List<Integer> valores) {
+	public int getSumaNumeros(@RequestParam List<Integer> valores) {
 
 		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
 				.operationMath(mathematicOperationHelper.numeroSumaToString(valores)).build());
