@@ -86,7 +86,7 @@ public class MathematicOperationHelper {
 		return resultado;
 	}
 
-	public int sumaNumerosA(HashMap<OperationsEnum, Integer> valores) {
+	public int sumaNumerosHash(HashMap<OperationsEnum, Integer> valores) {
 
 		int resultado = 0;
 		int numero = 0;
@@ -117,7 +117,7 @@ public class MathematicOperationHelper {
 		return resultado;
 	}
 
-	public String numerosString(HashMap<OperationsEnum, Integer> valores) {
+	public String numerosStringHash(HashMap<OperationsEnum, Integer> valores) {
 
 		String operacion = "";
 
@@ -143,17 +143,19 @@ public class MathematicOperationHelper {
 
 	}
 
-	public int sumaNumeros(List<Integer> valores) {
+	public int sumaNumerosList(List<Integer> valores) {
+		int suma = 0;
+		for (int i = 0; i < valores.size(); i++) {
+			suma += valores.get(i);
+		}
 
-		int suma = valores.stream().mapToInt(Integer::intValue).sum();
 		return suma;
 	}
 
-	public String operacionToString(List<Integer> valores) {
+	public String operacionToStringList(List<Integer> valores) {
 		String espacio = " ";
 
-		String numeros = valores.stream().map(Object::toString).collect(Collectors.joining(espacio));
-		return numeros;
+		return String.join(espacio, String.valueOf(valores));
 	}
 
 	public double getOperation(List<String> valores) {
@@ -166,7 +168,7 @@ public class MathematicOperationHelper {
 			String[] separa = valor.split("=");
 			operador = separa[0];
 			numero = Double.valueOf(separa[1]);
-			log.info("Operador= [{}] y numero= [{}]",operador, numero);
+			log.info("Operador= [{}] y numero= [{}]", operador, numero);
 
 			if (OperationsEnum.SUMA.name().equalsIgnoreCase(operador)) {
 				resultado += numero;
@@ -176,29 +178,27 @@ public class MathematicOperationHelper {
 				resultado *= numero;
 			} else if (OperationsEnum.DIVISION.name().equalsIgnoreCase(operador)) {
 				resultado /= numero;
-			}			
+			}
 		}
-		log.info("Resultado= [{}] ",resultado);
+		log.info("Resultado= [{}] ", resultado);
 		return resultado;
 	}
-	
+
 	public String calculoToString(List<String> valores) {
 		String espacio = ",";
 
-		String numeros = valores.stream().map(Object::toString).collect(Collectors.joining(espacio));
-		return numeros;
+		return String.join(espacio, valores);
 	}
-	
-	public List<String> stringToList(int id){
+
+	public List<String> stringToList(int id) {
 		MathematicsOperationsEntity mathematicsOperationsEntity = mathematicService.getMathematicOperationById(id);
 		String operacion = mathematicsOperationsEntity.getOperationMath();
 		List<String> addOperaciones = new ArrayList<String>();
-		String []separaOperaciones=operacion.split(",");
-		for(String operaciones: separaOperaciones) {
+		String[] separaOperaciones = operacion.split(",");
+		for (String operaciones : separaOperaciones) {
 			addOperaciones.add(operaciones);
 		}
 		return addOperaciones;
 	}
-	
 
 }

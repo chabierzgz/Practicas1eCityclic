@@ -80,9 +80,9 @@ public class mathematicController {
 	public int getResultSumaNumeros(@RequestParam HashMap<OperationsEnum, Integer> valores) {
 
 		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
-				.operationMath(mathematicOperationHelper.numerosString(valores)).build());
+				.operationMath(mathematicOperationHelper.numerosStringHash(valores)).build());
 
-		return mathematicOperationHelper.sumaNumerosA(valores);
+		return mathematicOperationHelper.sumaNumerosHash(valores);
 	}
 
 	@GetMapping("/sumanumeros")
@@ -90,8 +90,8 @@ public class mathematicController {
 	public int getSumaNumeros(@RequestParam List<Integer> valores) {
 
 		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
-				.operationMath(mathematicOperationHelper.operacionToString(valores)).build());
-		return mathematicOperationHelper.sumaNumeros(valores);
+				.operationMath(mathematicOperationHelper.operacionToStringList(valores)).build());
+		return mathematicOperationHelper.sumaNumerosList(valores);
 	}
 
 	@GetMapping("/obtenercalculo")
