@@ -2,26 +2,22 @@ package com.ecityclic.practicas1eCityclic.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.server.ResponseStatusException;
 
 import com.ecityclic.practicas1eCityclic.beans.MathematicPetition;
 import com.ecityclic.practicas1eCityclic.entity.MathematicsOperationsEntity;
 import com.ecityclic.practicas1eCityclic.enums.OperationsEnum;
 import com.ecityclic.practicas1eCityclic.helper.MathematicOperationHelper;
 import com.ecityclic.practicas1eCityclic.service.MathematicService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/practica1/mathematic")
@@ -94,8 +90,25 @@ public class mathematicController {
 	public int getSumaNumeros(@RequestParam List<Integer> valores) {
 
 		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
-				.operationMath(mathematicOperationHelper.numeroSumaToString(valores)).build());
+				.operationMath(mathematicOperationHelper.operacionToString(valores)).build());
 		return mathematicOperationHelper.sumaNumeros(valores);
+	}
+
+	@GetMapping("/obtenercalculo")
+	@ResponseBody
+	public Double getCalculo(@RequestParam List<String> valores) {
+
+		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
+				.operationMath(mathematicOperationHelper.calculoToString(valores)).build());
+
+		return mathematicOperationHelper.getOperation(valores);
+	}
+
+	@GetMapping("/recuperaoperacion")
+	@ResponseBody
+	public Double getRecuperaOperacion(@RequestParam int id) {
+
+		return mathematicOperationHelper.getOperation(mathematicOperationHelper.stringToList(id));
 	}
 
 	/**

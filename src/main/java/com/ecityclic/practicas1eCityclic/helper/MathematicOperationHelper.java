@@ -14,6 +14,9 @@ import com.ecityclic.practicas1eCityclic.entity.MathematicsOperationsEntity;
 import com.ecityclic.practicas1eCityclic.enums.OperationsEnum;
 import com.ecityclic.practicas1eCityclic.service.MathematicService;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Component
 public class MathematicOperationHelper {
 
@@ -91,20 +94,20 @@ public class MathematicOperationHelper {
 
 		for (HashMap.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
 
-			if (OperationsEnum.SUMA.name().toLowerCase().equals(datos.getKey())&& datos.getValue()!=null) {
-				num=String.valueOf(datos.getValue());
+			if (OperationsEnum.SUMA.name().equals(datos.getKey()) && datos.getValue() != null) {
+				num = String.valueOf(datos.getValue());
 				numero = Integer.valueOf(num);
 				resultado = resultado + numero;
-			} else if (OperationsEnum.RESTA.name().equals(datos.getKey())&& datos.getValue()!=null) {
-				num=String.valueOf(datos.getValue());
+			} else if (OperationsEnum.RESTA.name().equals(datos.getKey()) && datos.getValue() != null) {
+				num = String.valueOf(datos.getValue());
 				numero = Integer.valueOf(num);
 				resultado = resultado - numero;
-			} else if (OperationsEnum.MULTIPLICACION.name().equals(datos.getKey())&& datos.getValue()!=null) {
-				num=String.valueOf(datos.getValue());
+			} else if (OperationsEnum.MULTIPLICACION.name().equals(datos.getKey()) && datos.getValue() != null) {
+				num = String.valueOf(datos.getValue());
 				numero = Integer.valueOf(num);
 				resultado = resultado * datos.getValue();
-			} else if (OperationsEnum.DIVISION.name().equals(datos.getKey())&& datos.getValue()!=null) {
-				num=String.valueOf(datos.getValue());
+			} else if (OperationsEnum.DIVISION.name().equals(datos.getKey()) && datos.getValue() != null) {
+				num = String.valueOf(datos.getValue());
 				numero = Integer.valueOf(num);
 				resultado = resultado / datos.getValue();
 			}
@@ -146,11 +149,56 @@ public class MathematicOperationHelper {
 		return suma;
 	}
 
-	public String numeroSumaToString(List<Integer> valores) {
+	public String operacionToString(List<Integer> valores) {
 		String espacio = " ";
 
 		String numeros = valores.stream().map(Object::toString).collect(Collectors.joining(espacio));
 		return numeros;
 	}
+
+	public double getOperation(List<String> valores) {
+
+		double resultado = 0;
+		double numero = 0;
+		String operador = "";
+
+		for (String valor : valores) {
+			String[] separa = valor.split("=");
+			operador = separa[0];
+			numero = Double.valueOf(separa[1]);
+			log.info("Operador= [{}] y numero= [{}]",operador, numero);
+
+			if (OperationsEnum.SUMA.name().equalsIgnoreCase(operador)) {
+				resultado += numero;
+			} else if (OperationsEnum.RESTA.name().equalsIgnoreCase(operador)) {
+				resultado -= numero;
+			} else if (OperationsEnum.MULTIPLICACION.name().equalsIgnoreCase(operador)) {
+				resultado *= numero;
+			} else if (OperationsEnum.DIVISION.name().equalsIgnoreCase(operador)) {
+				resultado /= numero;
+			}			
+		}
+		log.info("Resultado= [{}] ",resultado);
+		return resultado;
+	}
+	
+	public String calculoToString(List<String> valores) {
+		String espacio = ",";
+
+		String numeros = valores.stream().map(Object::toString).collect(Collectors.joining(espacio));
+		return numeros;
+	}
+	
+	public List<String> stringToList(int id){
+		MathematicsOperationsEntity mathematicsOperationsEntity = mathematicService.getMathematicOperationById(id);
+		String operacion = mathematicsOperationsEntity.getOperationMath();
+		List<String> addOperaciones = new ArrayList<String>();
+		String []separaOperaciones=operacion.split(",");
+		for(String operaciones: separaOperaciones) {
+			addOperaciones.add(operaciones);
+		}
+		return addOperaciones;
+	}
+	
 
 }
