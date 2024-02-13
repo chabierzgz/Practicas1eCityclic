@@ -1,14 +1,9 @@
 package com.ecityclic.practicas1eCityclic.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.ecityclic.practicas1eCityclic.beans.MathematicPetition;
-import com.ecityclic.practicas1eCityclic.enums.OperationsEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,9 +23,4 @@ public class MathematicsOperationsEntity {
 	private String operationMath;
 	
 	
-	/**
-	 * esta parte es de ejemplo
-	 */
-//	List<Integer> nums;
-//	OperationsEnum operation;
 }

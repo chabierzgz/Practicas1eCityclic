@@ -25,57 +25,23 @@ public class TextoHelper {
 		for (int i = 0; i < repetir; i++) {
 
 			log.info("Datos personales :" + persona);
-
 		}
-
 	}
 
 	public List<Persona> generatePersonas(int numDePersonas) {
 
 		List<Persona> personas = new ArrayList<Persona>();
-
 		int i = 0;
 
 		while (i < numDePersonas) {
-
 			Persona persona = Persona.builder().nom("Nombre " + i).fechaNacimiento(generaFecha()).ciutat("ciutat" + i)
 					.build();
-
 			personas.add(persona);
-
 			i++;
-
 		}
-
 		return personas;
-
 	}
 
-//	public List<Persona> pintarSoloMayoresDe(int edad, int cantidadDePersonas) {
-//
-//		List<Persona> listPersonas = new ArrayList<Persona>();
-//		List<Persona> personas = generatePersonas(cantidadDePersonas);
-//
-//		for (Persona person : personas) {
-//
-//			Calendar fechaN = Calendar.getInstance();
-//
-//			Calendar fechaHoy = Calendar.getInstance();
-//
-//			fechaN.setTime(person.getFechaNacimiento());
-//
-//			int anos = fechaHoy.get(Calendar.YEAR) - fechaN.get(Calendar.YEAR);
-//
-//			if (anos >= edad) {
-//
-//				listPersonas.add(person);
-//
-//			}
-//
-//		}
-//		return listPersonas;
-//
-//	}
 
 	public Date generaFecha() {
 		Calendar c = Calendar.getInstance();

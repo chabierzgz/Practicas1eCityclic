@@ -28,7 +28,7 @@ public class mathematicController {
 	@Autowired
 	private MathematicOperationHelper mathematicOperationHelper;
 
-	@PostMapping("/operation")
+	@PostMapping(path ="/operation" , produces="application/json", consumes="application/json")
 	@ResponseBody
 	public int getResultOperationA(@RequestBody MathematicPetition mathematicPetition) {
 
@@ -39,7 +39,7 @@ public class mathematicController {
 
 	}
 
-	@PostMapping("/operation/{operation}")
+	@PostMapping(path="/operation/{operation}", produces="application/json", consumes="application/json")
 	@ResponseBody
 	public int getResultOperationB(@PathVariable("operation") String operation) {
 
@@ -50,7 +50,7 @@ public class mathematicController {
 
 	}
 
-	@GetMapping("/getOperations")
+	@GetMapping(path="/getOperations", produces="application/json")
 	@ResponseBody
 	public List<MathematicsOperationsEntity> getOperations() {
 
@@ -59,7 +59,7 @@ public class mathematicController {
 		return operationsList = mathematicService.getMathematicOperation();
 	}
 
-	@GetMapping("/getOperation")
+	@GetMapping(path="/getOperation", produces="application/json")
 	@ResponseBody
 	public MathematicsOperationsEntity getOperatioForId(@RequestParam("id") int id) {
 
@@ -67,7 +67,7 @@ public class mathematicController {
 
 	}
 
-	@GetMapping("/getsuma")
+	@GetMapping(path="/getsuma", produces="application/json")
 	@ResponseBody
 	public int getSoloSuma(@RequestParam("id") int id) {
 
@@ -75,7 +75,7 @@ public class mathematicController {
 
 	}
 
-	@GetMapping("/sumavalores")
+	@GetMapping(path="/sumavalores", produces="application/json")
 	@ResponseBody
 	public int getResultSumaNumeros(@RequestParam HashMap<OperationsEnum, Integer> valores) {
 
@@ -85,7 +85,7 @@ public class mathematicController {
 		return mathematicOperationHelper.sumaNumerosHash(valores);
 	}
 
-	@GetMapping("/sumanumeros")
+	@GetMapping(path="/sumanumeros", produces="application/json")
 	@ResponseBody
 	public int getSumaNumeros(@RequestParam List<Integer> valores) {
 
@@ -94,7 +94,7 @@ public class mathematicController {
 		return mathematicOperationHelper.sumaNumerosList(valores);
 	}
 
-	@GetMapping("/obtenercalculo")
+	@GetMapping(path="/obtenercalculo", produces="application/json")
 	@ResponseBody
 	public Double getCalculo(@RequestParam List<String> valores) {
 
@@ -104,38 +104,11 @@ public class mathematicController {
 		return mathematicOperationHelper.getOperation(valores);
 	}
 
-	@GetMapping("/recuperaoperacion")
+	@GetMapping(path="/recuperaoperacion", produces="application/json")
 	@ResponseBody
 	public Double getRecuperaOperacion(@RequestParam int id) {
 
 		return mathematicOperationHelper.getOperation(mathematicOperationHelper.stringToList(id));
 	}
-
-	/**
-	 * quiero que recibas operaciones como:
-	 * localhost:8081/sumanNumeros?SUMA=1212&menos=2323&multiplica=22 y que me
-	 * devuelvas el resultado. Ademas, que guardes esta operacion en BD para
-	 * poderlas listas luego en otro momento.
-	 * 
-	 * Quiero poder ver todas las operaciones que se han hecho
-	 * 
-	 * Quiero poder repetir una operacion.
-	 * 
-	 * Pra ahorrar espacio en la BD, no se guardará el resultado de la operación
-	 * Estse será siempre calculado.
-	 */
-
-//	@GetMapping("/sumaNumeros/{valores}")
-//	@ResponseBody
-//	public void sumaNumeros(@RequestParam Hash<String,Integer> valores) {
-//		
-//		
-//		if(operacion.getValor().equals("SUMA")) {
-//			
-//		}
-//		if("SUMA".equals(operacion.getValor()){
-//			
-//		}
-//	}
 
 }

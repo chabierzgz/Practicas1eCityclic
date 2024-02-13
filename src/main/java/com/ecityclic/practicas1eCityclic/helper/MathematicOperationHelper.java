@@ -3,7 +3,6 @@ package com.ecityclic.practicas1eCityclic.helper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,6 @@ public class MathematicOperationHelper {
 
 		List<String> numeros = new ArrayList<String>();
 		List<String> TipoOperacion = new ArrayList<String>();
-
 		int resultado = 0;
 		String aux = "";
 
@@ -144,15 +142,15 @@ public class MathematicOperationHelper {
 	}
 
 	public int sumaNumerosList(List<Integer> valores) {
-		int suma = 0;
+		int resultado = 0;
 		for (int i = 0; i < valores.size(); i++) {
-			suma += valores.get(i);
+			resultado += valores.get(i);
 		}
 
-		return suma;
+		return resultado;
 	}
 
-	public String operacionToStringList(List<Integer> valores) {
+	public String operacionListToString(List<Integer> valores) {
 		String espacio = " ";
 
 		return String.join(espacio, String.valueOf(valores));
@@ -168,7 +166,7 @@ public class MathematicOperationHelper {
 			String[] separa = valor.split("=");
 			operador = separa[0];
 			numero = Double.valueOf(separa[1]);
-			log.info("Operador= [{}] y numero= [{}]", operador, numero);
+			log.info("Operador = [{}] y numero = [{}]", operador, numero);
 
 			if (OperationsEnum.SUMA.name().equalsIgnoreCase(operador)) {
 				resultado += numero;
@@ -186,7 +184,6 @@ public class MathematicOperationHelper {
 
 	public String calculoToString(List<String> valores) {
 		String espacio = ",";
-
 		return String.join(espacio, valores);
 	}
 
