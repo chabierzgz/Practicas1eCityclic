@@ -39,9 +39,9 @@ public class mathematicController {
 
 	}
 
-	@PostMapping(path="/operation/{operation}", produces="application/json", consumes="application/json")
+	@PostMapping(path="/operations/{operation}")
 	@ResponseBody
-	public int getResultOperationB(@PathVariable("operation") String operation) {
+	public Integer getResultOperationB(@PathVariable String operation) {
 
 		mathematicService
 				.saveMathematicOperation(MathematicsOperationsEntity.builder().operationMath(operation).build());
@@ -54,9 +54,7 @@ public class mathematicController {
 	@ResponseBody
 	public List<MathematicsOperationsEntity> getOperations() {
 
-		List<MathematicsOperationsEntity> operationsList;
-
-		return operationsList = mathematicService.getMathematicOperation();
+		return mathematicService.getMathematicOperation();
 	}
 
 	@GetMapping(path="/getOperation", produces="application/json")
@@ -90,13 +88,23 @@ public class mathematicController {
 	public int getSumaNumeros(@RequestParam List<Integer> valores) {
 
 		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
-				.operationMath(mathematicOperationHelper.operacionToStringList(valores)).build());
+				.operationMath(mathematicOperationHelper.operacionListToString(valores)).build());
 		return mathematicOperationHelper.sumaNumerosList(valores);
 	}
 
 	@GetMapping(path="/obtenercalculo", produces="application/json")
 	@ResponseBody
 	public Double getCalculo(@RequestParam List<String> valores) {
+
+		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
+				.operationMath(mathematicOperationHelper.calculoToString(valores)).build());
+
+		return mathematicOperationHelper.getOperation(valores);
+	}
+	
+	@GetMapping(path="/obtenercalculos/{valores}", produces="application/json")
+	@ResponseBody
+	public Double getCalculoPath(@PathVariable("valores") List<String> valores) {
 
 		mathematicService.saveMathematicOperation(MathematicsOperationsEntity.builder()
 				.operationMath(mathematicOperationHelper.calculoToString(valores)).build());
@@ -110,5 +118,7 @@ public class mathematicController {
 
 		return mathematicOperationHelper.getOperation(mathematicOperationHelper.stringToList(id));
 	}
+	
+	
 
 }

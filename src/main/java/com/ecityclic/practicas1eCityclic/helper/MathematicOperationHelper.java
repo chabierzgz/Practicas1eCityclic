@@ -91,22 +91,15 @@ public class MathematicOperationHelper {
 		String num = "";
 
 		for (HashMap.Entry<OperationsEnum, Integer> datos : valores.entrySet()) {
-
+			num=String.valueOf(datos.getValue());
+			numero = Integer.valueOf(num);
 			if (OperationsEnum.SUMA.name().equals(datos.getKey()) && datos.getValue() != null) {
-				num = String.valueOf(datos.getValue());
-				numero = Integer.valueOf(num);
 				resultado = resultado + numero;
 			} else if (OperationsEnum.RESTA.name().equals(datos.getKey()) && datos.getValue() != null) {
-				num = String.valueOf(datos.getValue());
-				numero = Integer.valueOf(num);
 				resultado = resultado - numero;
 			} else if (OperationsEnum.MULTIPLICACION.name().equals(datos.getKey()) && datos.getValue() != null) {
-				num = String.valueOf(datos.getValue());
-				numero = Integer.valueOf(num);
 				resultado = resultado * datos.getValue();
 			} else if (OperationsEnum.DIVISION.name().equals(datos.getKey()) && datos.getValue() != null) {
-				num = String.valueOf(datos.getValue());
-				numero = Integer.valueOf(num);
 				resultado = resultado / datos.getValue();
 			}
 
@@ -133,12 +126,13 @@ public class MathematicOperationHelper {
 			} else if (OperationsEnum.DIVISION.name().equals(datos.getKey())) {
 				operacion = operacion + OperationsEnum.DIVISION.getSigno();
 				operacion = operacion + String.valueOf(datos.getValue());
+			}else {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "operador no válido");
 			}
 
 		}
 
 		return operacion;
-
 	}
 
 	public int sumaNumerosList(List<Integer> valores) {
@@ -176,6 +170,8 @@ public class MathematicOperationHelper {
 				resultado *= numero;
 			} else if (OperationsEnum.DIVISION.name().equalsIgnoreCase(operador)) {
 				resultado /= numero;
+			}else {
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "operación no valida");
 			}
 		}
 		log.info("Resultado= [{}] ", resultado);
