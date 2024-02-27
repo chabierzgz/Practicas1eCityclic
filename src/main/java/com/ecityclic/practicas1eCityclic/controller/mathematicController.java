@@ -119,6 +119,13 @@ public class mathematicController {
 		return mathematicOperationHelper.getOperation(mathematicOperationHelper.stringToList(id));
 	}
 	
+	@GetMapping(path="/mostraroperaciones", produces="application/json")
+	@ResponseBody
+	public List<MathematicsOperationsEntity> getMethodName() {
+		return mathematicService.getMathematicOperation();
+	}
+	
+	
 	
 
 }

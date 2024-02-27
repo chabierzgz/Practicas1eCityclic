@@ -1,24 +1,14 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
-    #url: jdbc:h2:file:C:/work/basesDatosH2/Practica1/testdb
-    driver-class-name: org.h2.Driver
-    username: eCity
-    password: practica1Clic
-  h2:
-    console:
-      enabled: true   # http://localhost:8081/h2-console
-      #path: /dataBase
-      #settings:
-      #  web-allow-others: false
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-        show_sql: true
-        ddl-auto: update
+    url: jdbc:mysql://localhost:3306/dbtest
+    username: Carlos
+    password: c3Qh3K7wrMtQt/lp
+    driver-class-name: com.mysql.jdbc.Driver
 
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 server:
   port: 8081

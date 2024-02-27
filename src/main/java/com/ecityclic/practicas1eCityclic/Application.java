@@ -5,9 +5,6 @@ package com.ecityclic.practicas1eCityclic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-
-import com.ecityclic.practicas1eCityclic.controller.PersonController;
 
 
 @SpringBootApplication
